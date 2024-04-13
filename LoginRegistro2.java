@@ -1,224 +1,180 @@
-package ventanasLoginRegistro;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridLayout;
+package registroLogin;
 
-import javax.swing.ImageIcon;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-@SuppressWarnings("serial")
-public class LoginRegistro2 extends JFrame {
+public class LoginRegistro2 {
+    private JFrame frame;
+    private JTextField textField;
+    private JTextField textField_1;
+    private JLabel lblContrasea;
+    private JLabel lblUsuario;
+    private JButton btnNewButton;
+    private JButton btnNewButton_1;
+    private JLabel lblNewLabel_1;
 
-	
-	private Component Userlogin;
-	public LoginRegistro2() {
-        setTitle("Ventana");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.componentes();
-        
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    LoginRegistro2 window = new LoginRegistro2();
+                    window.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
-	public void componentes() {
-		
-		this.Userlogin();
-		//this.Registro();
-	}
-	public void Userlogin() {
 
-		
-		JPanel login = new JPanel();
-		login.setLayout(new BorderLayout());
-		login.setBackground(new Color(13, 61, 131));
+    public LoginRegistro2() {
+        initialize();
+    }
 
-		JLabel img = new JLabel("");
-		img.setIcon(new ImageIcon(getClass().getResource("/userIcon.png")));
-		login.add(img, BorderLayout.NORTH);
+    private void initialize() {
+        frame = new JFrame();
+        frame.getContentPane().setBackground(new Color(0, 128, 192));
+        frame.setBounds(100, 100, 620, 497);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setLayout(null);
 
-		JLabel img2 = new JLabel("");
-		img2.setIcon(new ImageIcon(getClass().getResource("/candado.png")));
-		login.add(img2, BorderLayout.CENTER);
+        JLabel lblNewLabel = new JLabel("Iniciar Sesion");
+        lblNewLabel.setBackground(new Color(192, 192, 192));
+        lblNewLabel.setOpaque(true);
+        lblNewLabel.setBounds(244, 24, 116, 32);
+        lblNewLabel.setVerticalAlignment(SwingConstants.CENTER);
+        lblNewLabel.setHorizontalAlignment(JLabel.CENTER);
+        frame.getContentPane().add(lblNewLabel);
 
-		JPanel contentPanel = new JPanel();
-		contentPanel.setLayout(null);
-		contentPanel.setBackground(new Color(13, 61, 131));
-		login.add(contentPanel, BorderLayout.SOUTH);
+        textField = new JTextField();
+        textField.setBounds(254, 130, 96, 32);
+        textField.setHorizontalAlignment(SwingConstants.CENTER);
+        textField.setHorizontalAlignment(JLabel.CENTER);
+        frame.getContentPane().add(textField);
+        textField.setColumns(10);
 
-		JLabel user = new JLabel("User Login");
-		user.setBounds(280, 20, 200, 40);
-		user.setFont(new Font("signPainter", Font.BOLD, 30));
-		user.setForeground(Color.white);
-		contentPanel.add(user);
+        textField_1 = new JTextField();
+        textField_1.setBounds(254, 242, 96, 32);
+        textField_1.setHorizontalAlignment(SwingConstants.CENTER);
+        frame.getContentPane().add(textField_1);
+        textField_1.setColumns(10);
 
-		JLabel title = new JLabel("My account", SwingConstants.CENTER);
-		title.setBounds(220, 80, 250, 100);
-		title.setFont(new Font("signPainter", Font.BOLD, 40));
-		title.setForeground(Color.YELLOW);
-		contentPanel.add(title);
+        lblContrasea = new JLabel("Contraseña");
+        lblContrasea.setOpaque(true);
+        lblContrasea.setBounds(244, 186, 116, 32);
+        lblContrasea.setVerticalAlignment(SwingConstants.CENTER);
+        lblContrasea.setHorizontalAlignment(JLabel.CENTER);
+        frame.getContentPane().add(lblContrasea);
 
-		JLabel usuario = new JLabel("Enter your username", SwingConstants.CENTER);
-		usuario.setBounds(170, 170, 180, 30);
-		usuario.setFont(new Font("signPainter", Font.BOLD, 12));
-		usuario.setForeground(Color.white);
-		contentPanel.add(usuario);
+        lblUsuario = new JLabel("Usuario");
+        lblUsuario.setOpaque(true);
+        lblUsuario.setBackground(new Color(255, 255, 255));
+        lblUsuario.setBounds(244, 80, 116, 26);
+        lblUsuario.setVerticalAlignment(SwingConstants.CENTER);
+        lblUsuario.setHorizontalAlignment(JLabel.CENTER);
+        frame.getContentPane().add(lblUsuario);
 
-		JTextField usuarioField = new JTextField();
-		usuarioField.setBounds(200, 200, 280, 30);
-		contentPanel.add(usuarioField);
+        btnNewButton = new JButton("Acceder");
+        btnNewButton.setBounds(257, 298, 89, 23);
+        btnNewButton.setHorizontalAlignment(JLabel.CENTER);
+        btnNewButton.setVerticalAlignment(SwingConstants.CENTER);
+        frame.getContentPane().add(btnNewButton);
 
-		JLabel contraseña = new JLabel("Enter your password", SwingConstants.CENTER);
-		contraseña.setBounds(120, 250, 280, 30);
-		contraseña.setFont(new Font("signPainter", Font.BOLD, 12));
-		contraseña.setForeground(Color.white);
-		contentPanel.add(contraseña);
+        btnNewButton_1 = new JButton("Registrarse");
+        btnNewButton_1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Registro registroWindow = new Registro();
+                registroWindow.setVisible(true);
+                
+                frame.getContentPane().remove(lblNewLabel);
+                frame.getContentPane().repaint();
+                frame.getContentPane().revalidate();
+            }
+        });
+        btnNewButton_1.setBounds(238, 401, 128, 32);
+        btnNewButton_1.setVerticalAlignment(SwingConstants.CENTER);
+        frame.getContentPane().add(btnNewButton_1);
 
-		JPasswordField contraseñaField = new JPasswordField();
-		contraseñaField.setBounds(200, 280, 280, 30);
-		contraseñaField.setOpaque(true);
-		contentPanel.add(contraseñaField);
+        lblNewLabel_1 = new JLabel("No Tienes con una Cuenta? Registrate ");
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        lblNewLabel_1.setBounds(174, 345, 256, 32);
+        lblNewLabel_1.setHorizontalAlignment(JLabel.CENTER);
+        lblNewLabel_1.setVerticalAlignment(SwingConstants.CENTER);
+        frame.getContentPane().add(lblNewLabel_1);
+    }
+}
 
-		JButton acceder = new JButton("Acceder");
-		acceder.setBounds(270, 320, 140, 50);
-		acceder.setBackground(Color.YELLOW);
-		contentPanel.add(acceder);
+class Registro extends JFrame {
+    private JTextField textField;
+    private JTextField textField_1;
 
-		JLabel cuenta = new JLabel("Don't have an account?", SwingConstants.CENTER);
-		cuenta.setBounds(250, 380, 180, 30);
-		cuenta.setForeground(Color.WHITE);
-		contentPanel.add(cuenta);
+    public Registro() {
+        initialize();
+    }
 
-		JButton registro = new JButton("Sign up");
-		registro.setBounds(250, 420, 180, 30);
-		registro.setBackground(Color.YELLOW);
-		contentPanel.add(registro);
+    private void initialize() {
+        getContentPane().setBackground(new Color(0, 128, 255));
+        setBounds(100, 100, 676, 508);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-		JPanel login2 = new JPanel();
-		login2.setBounds(100, 80, 500, 300);
-		login2.setLayout(null);
-		login2.setBackground(new Color(13, 54, 113));
-		contentPanel.add(login2);
-		
-		JMenuBar barra = new JMenuBar(); 
-		JMenu lista1 = new JMenu("Mas + ");
-		
-		JMenuItem option1 = new JMenuItem("Abrir");
-		JMenuItem option2 = new JMenuItem("Nuevo");
-		JMenuItem option3 = new JMenuItem("Editar");
-		JMenuItem option4 = new JMenuItem("Eliminar");
-		
-		barra.add(lista1);
-		lista1.add(option1);
-		lista1.add(option2);
-		lista1.add(option3);
-		lista1.add(option4);
-		
-		this.setJMenuBar(barra);
-        add(Userlogin);
-        setSize(400, 512);
+        JLabel lblNewLabel = new JLabel("REGISTRO");
+        lblNewLabel.setBackground(new Color(192, 192, 192));
+        lblNewLabel.setOpaque(true);
+        lblNewLabel.setVerticalAlignment(SwingConstants.CENTER);
+        lblNewLabel.setHorizontalAlignment(JLabel.CENTER);
+        lblNewLabel.setBounds(203, 11, 256, 32);
+        getContentPane().add(lblNewLabel);
 
-		this.add(login);
-	
-		
-		
-	}
-			public void Registro() {
+        textField = new JTextField();
+        textField.setBounds(235, 133, 202, 32);
+        getContentPane().add(textField);
+        textField.setColumns(10);
 
-	
-	JPanel Registro = new JPanel();
-	Registro.setSize(400,512);
-	Registro.setLayout(null);
-	Registro.setBackground(Color.CYAN);
-	
-	 JLabel title = new JLabel("Registro");
-		title.setHorizontalAlignment(JLabel.CENTER);
-		title.setFont(new Font("SignPainter", Font.BOLD, 30));
-        title.setBackground(Color.CYAN);
-        title.setBounds(100, 10, 190, 40);
-        title.setOpaque(true);
-        Registro.add(title);
-        
-        JLabel usuario = new JLabel("Ingrese Nombre De Usuario:");
-        usuario.setFont(new Font("Agency FB", Font.BOLD, 15));
-        usuario.setBounds(5, 80, 400, 60);
-        Registro.add(usuario);
-        
-        JTextField usuarioField = new JTextField();
-        usuarioField.setBounds(10, 120, 300, 20);
-        Registro.add(usuarioField);
-        
-        JCheckBox tipo1 = new JCheckBox("Dulce");
-        tipo1.setBounds(10, 140, 70, 35);
-        tipo1.setOpaque(false);
-        tipo1.setBackground(Color.green);
-        Registro.add(tipo1);
-        
-        JCheckBox tipo2 = new JCheckBox("Salada");
-        tipo2.setBounds(100, 140, 70, 35);
-        tipo2.setOpaque(false);
-        tipo2.setBackground(Color.green);
-        Registro.add(tipo2);
-        
-        JLabel seleccion = new JLabel("Seleccione sus Preferencias");
-        seleccion.setFont(new Font("Agency FB", Font.BOLD, 15));
-        seleccion.setBounds(10, 150, 300, 60);
-        Registro.add(seleccion);
-        
-        JCheckBox opcion1 = new JCheckBox("Nutella y Fresas");
-        opcion1.setBounds(10, 200, 120, 35);
-        opcion1.setOpaque(false);
-        opcion1.setBackground(Color.green);
-        Registro.add(opcion1);
-        
-        JCheckBox opcion2 = new JCheckBox("MermeladaF y QuesoC");
-        opcion2.setBounds(170, 200, 160, 35);
-        opcion2.setOpaque(false);
-        opcion2.setBackground(Color.green);
-        Registro.add(opcion2);
-        
-        JLabel seleccion2 = new JLabel("Mas Opciones:");
-        seleccion2.setFont(new Font("Agency FB", Font.BOLD, 15));
-        seleccion2.setBounds(10, 220, 300, 60);
-        Registro.add(seleccion2);
-        
-        String Opciones[] = {"Fresas Solas","Solo Chocolate","Solo Queso","Queso Chocolate","Fresas Queso"};
-		
-		JComboBox<Object> opciones1 = new JComboBox<Object>(Opciones);
-		opciones1.setBounds(10, 270, 350, 20); 
-		Registro.add(opciones1);
-		
-		//seleccion del menu superior de la ventana
-		JMenuBar barra = new JMenuBar(); 
-		JMenu lista1 = new JMenu("Mas + ");
-		
-		JMenuItem option1 = new JMenuItem("Abrir");
-		JMenuItem option2 = new JMenuItem("Nuevo");
-		JMenuItem option3 = new JMenuItem("Editar");
-		JMenuItem option4 = new JMenuItem("Eliminar");
-		
-		barra.add(lista1);
-		lista1.add(option1);
-		lista1.add(option2);
-		lista1.add(option3);
-		lista1.add(option4);
-		
-		this.setJMenuBar(barra);
-        add(Registro);
-        setSize(400, 512);
-	
-	}
+        JLabel lblNewLabel_1_1 = new JLabel("Contraseña");
+        lblNewLabel_1_1.setBounds(274, 196, 128, 32);
+        lblNewLabel_1_1.setHorizontalAlignment(JLabel.CENTER);
+        lblNewLabel_1_1.setOpaque(true);
+        getContentPane().add(lblNewLabel_1_1);
+
+        textField_1 = new JTextField();
+        textField_1.setColumns(10);
+        textField_1.setBounds(235, 244, 202, 32);
+        getContentPane().add(textField_1);
+
+        JButton btnNewButton = new JButton("Crear Cuenta");
+        btnNewButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
+        btnNewButton.setHorizontalAlignment(JLabel.CENTER);
+        btnNewButton.setBounds(274, 300, 128, 32);
+        getContentPane().add(btnNewButton);
+
+        JButton btnNewButton_1 = new JButton("Iniciar Sesion");
+        btnNewButton_1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        btnNewButton_1.setHorizontalAlignment(JLabel.CENTER);
+        btnNewButton_1.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnNewButton_1.setBounds(260, 363, 160, 32);
+        getContentPane().add(btnNewButton_1);
+
+        JLabel lblNewLabel_1_1_1 = new JLabel("Nombre de Usuario");
+        lblNewLabel_1_1_1.setOpaque(true);
+        lblNewLabel_1_1_1.setBounds(260, 83, 160, 32);
+        lblNewLabel_1_1_1.setHorizontalAlignment(JLabel.CENTER);
+        getContentPane().add(lblNewLabel_1_1_1);
+    }
 }
