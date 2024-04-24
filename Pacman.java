@@ -31,14 +31,14 @@ public class PacmanGame extends JFrame implements KeyListener {
         getContentPane().setBackground(Color.BLACK); 
         addKeyListener(this);
 
-        // Generate pills
+        
         for (int i = 0; i < 20; i++) {
             int x = (int) (Math.random() * WIDTH);
             int y = (int) (Math.random() * HEIGHT);
             pills.add(new Point(x, y));
         }
 
-        // Add walls
+        
         walls.add(new Rectangle(0, 0, 20, 20)); 
         walls.add(new Rectangle(800, 300, 40, 20));
         walls.add(new Rectangle(300, 300, 40, 20));
@@ -76,20 +76,20 @@ public class PacmanGame extends JFrame implements KeyListener {
         int key = e.getKeyCode();
         switch (key) {
             case KeyEvent.VK_A:
-                tryMove(-PACMAN_SPEED, 0); // Move left
+                tryMove(-PACMAN_SPEED, 0);
                 break;
             case KeyEvent.VK_D:
-                tryMove(PACMAN_SPEED, 0); // Move right
+                tryMove(PACMAN_SPEED, 0); 
                 break;
             case KeyEvent.VK_W:
-                tryMove(0, -PACMAN_SPEED); // Move up
+                tryMove(0, -PACMAN_SPEED); 
                 break;
             case KeyEvent.VK_S:
-                tryMove(0, PACMAN_SPEED); // Move down
+                tryMove(0, PACMAN_SPEED); 
                 break;
         }
 
-        // Collision detection with pills
+        
         Rectangle pacmanRect = new Rectangle(pacmanX, pacmanY, PACMAN_SIZE, PACMAN_SIZE);
         for (Point pill : new ArrayList<>(pills)) {
             Rectangle pillRect = new Rectangle(pill.x, pill.y, PILL_SIZE, PILL_SIZE);
